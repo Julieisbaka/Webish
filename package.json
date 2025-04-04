@@ -1,5 +1,6 @@
 {
   "name": "webish",
+  "version": "0.0.1",
   "description": "Webish is your development environment reimagined!",
   "scripts": {
     "test": "jest"
