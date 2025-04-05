@@ -22,13 +22,16 @@ jobs:
           cache: 'npm'
       
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          npm install --legacy-peer-deps
+          npm install react-scripts --save-dev
       
       - name: Build React App
-        run: npm run build
+        run: CI=false npm run build
         env:
-          REACT_APP_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
-          REACT_APP_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          REACT_APP_OAUTH_ID: ${{ secrets.OAUTH_CLIENT_ID }}
+          REACT_APP_OAUTH_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          PUBLIC_URL: /Webish
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

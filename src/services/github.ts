@@ -7,7 +7,8 @@ export class GitHubService {
 
   constructor() {
     this.octokit = new Octokit({
-      auth: localStorage.getItem('github_token'),
+      auth: process.env.REACT_APP_OAUTH_SECRET,
+      clientId: process.env.REACT_APP_OAUTH_ID,
     });
     this.owner = process.env.REACT_APP_REPO_OWNER!;
     this.repo = process.env.REACT_APP_REPO_NAME!;
