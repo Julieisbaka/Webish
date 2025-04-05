@@ -1,1 +1,23 @@
-{}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "toolCommands": {
+      "type": "object",
+      "properties": {
+        "upload": {
+          "type": "string",
+          "default": "ctrl+shift+u"
+        },
+        "download": {
+          "type": "string",
+          "default": "ctrl+shift+d"
+        },
+        "refresh": {
+          "type": "string",
+          "default": "ctrl+r"
+        }
+      }
+    }
+  }
+}
