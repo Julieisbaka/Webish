@@ -21,18 +21,34 @@
   },
   "homepage": "https://julieisbaka.github.io/Webish",
   "dependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/plugin-transform-class-properties": "^7.24.0",
+    "@babel/plugin-transform-numeric-separator": "^7.24.0",
+    "@babel/plugin-transform-private-methods": "^7.24.0",
+    "@babel/plugin-transform-private-property-in-object": "^7.24.0",
+    "@jridgewell/sourcemap-codec": "^1.4.15",
+    "@rollup/plugin-terser": "^7.0.0",
+    "@endo/eventual-send": "^1.2.0",
+    "@endo/captp": "^1.2.0",
     "express": "^5.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
-    "@octokit/rest": "^20.0.2",
-    "react-scripts": "5.x.x",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@octokit/rest": "^20.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.9",
     "gh-pages": "^6.1.1",
     "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19"
+    "@types/react-dom": "^18.2.19",
+    "@eslint/config-array": "^1.0.0",
+    "@eslint/object-schema": "^1.0.0",
+    "eslint": "^9.0.0-alpha.0",
+    "svgo": "^2.8.0",
+    "glob": "^9.3.5",
+    "rimraf": "^5.0.5"
+  },
+  "resolutions": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
