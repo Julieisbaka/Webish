@@ -27,8 +27,8 @@ jobs:
       - name: Build React App
         run: npm run build
         env:
-          REACT_APP_GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
-          REACT_APP_GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+          REACT_APP_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
+          REACT_APP_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
