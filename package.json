@@ -41,14 +41,21 @@
     "gh-pages": "^6.1.1",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
-    "@eslint/config-array": "^1.0.0",
-    "@eslint/object-schema": "^1.0.0",
-    "eslint": "^9.0.0-alpha.0",
+    "eslint": "^8.57.0",
+    "eslint-config-react-app": "^7.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "svgo": "^2.8.0",
     "glob": "^9.3.5",
     "rimraf": "^5.0.5"
   },
   "resolutions": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   }
 }
