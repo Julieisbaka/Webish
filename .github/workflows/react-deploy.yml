@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -22,41 +22,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
+      
+      - name: Create lock file
+        run: npm run create-lock
       
       - name: Install Dependencies
-        run: |
-          npm install --legacy-peer-deps
-          npm ls || true
-      
-      - name: List files
-        run: find . -type f -path "./build/*" | sort
+        run: npm ci
       
       - name: Build
-        run: |
-          mkdir -p build
-          npm run build
+        run: npm run build
         env:
           CI: false
-          # Client ID from GitHub OAuth App registration
           REACT_APP_OAUTH_ID: ${{ secrets.OAUTH_CLIENT_ID }}
-          # Client Secret from GitHub OAuth App registration
           REACT_APP_OAUTH_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           PUBLIC_URL: /Webish
       
-      - name: Debug build output
-        run: ls -la build || echo "Build directory not found"
-      
-      - name: Upload artifact
-        run: |
-          echo "::group::Upload Pages Artifact"
-          RUNNER_TEMP=$(mktemp -d)
-          tar -czf "$RUNNER_TEMP/artifact.tar.gz" -C build .
-          echo "PAGES_ARTIFACT=$RUNNER_TEMP/artifact.tar.gz" >> $GITHUB_ENV
-          echo "::endgroup::"
-      
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          artifact_name: github-pages
-          token: ${{ github.token }}
+          folder: build
+          branch: gh-pages

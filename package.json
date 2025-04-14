@@ -17,7 +17,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "postinstall": "npm i --package-lock-only"
+    "postinstall": "npm i --package-lock-only",
+    "create-lock": "npm i --package-lock-only"
   },
   "homepage": "https://julieisbaka.github.io/Webish",
   "browserslist": {
