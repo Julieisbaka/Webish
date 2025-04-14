@@ -1,0 +1,46 @@
+name: Simple Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        with:
+          node-version: '16'
+      
+      - name: Setup
+        run: |
+          touch package-lock.json
+          npm install --no-package-lock
+      
+      - name: Build
+        run: |
+          CI=false npm run build
+        env:
+          REACT_APP_OAUTH_ID: ${{ secrets.OAUTH_CLIENT_ID }}
+          REACT_APP_OAUTH_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          PUBLIC_URL: https://julieisbaka.github.io/Webish
+      
+      - name: Deploy with gh-pages
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

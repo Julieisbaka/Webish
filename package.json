@@ -5,10 +5,13 @@
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "@octokit/rest": "^20.0.2"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,7 +21,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "postinstall": "npm i --package-lock-only",
-    "create-lock": "npm i --package-lock-only"
+    "create-lock": "npm i --package-lock-only",
+    "setup": "npm install && npm run create-lock"
   },
   "homepage": "https://julieisbaka.github.io/Webish",
   "browserslist": {
