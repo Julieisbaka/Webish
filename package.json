@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "private": false,
   "dependencies": {
-    "gh-pages": "^4.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -14,7 +16,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "postinstall": "npm i --package-lock-only"
   },
   "homepage": "https://julieisbaka.github.io/Webish",
   "browserslist": {

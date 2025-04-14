@@ -25,7 +25,9 @@ jobs:
           cache: 'npm'
       
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          npm install
+          npm ci
       
       - name: Build
         run: npm run build
@@ -41,7 +43,7 @@ jobs:
         uses: actions/configure-pages@v4
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
           path: './build'
       
