@@ -26,11 +26,16 @@ jobs:
       
       - name: Install Dependencies
         run: |
-          npm install
-          npm ci
+          npm install --legacy-peer-deps
+          npm ls || true
+      
+      - name: List files
+        run: find . -type f -path "./build/*" | sort
       
       - name: Build
-        run: npm run build
+        run: |
+          mkdir -p build
+          npm run build
         env:
           CI: false
           # Client ID from GitHub OAuth App registration
@@ -39,8 +44,8 @@ jobs:
           REACT_APP_OAUTH_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           PUBLIC_URL: /Webish
       
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Debug build output
+        run: ls -la build || echo "Build directory not found"
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
